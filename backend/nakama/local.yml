@@ -1,0 +1,9 @@
+logger:
+  level: "DEBUG"
+
+runtime:
+  path: "/nakama/data"
+  js_entrypoint: "build/index.js"
+
+session:
+  token_expiry_sec: 7200

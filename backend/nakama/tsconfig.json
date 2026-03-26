@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es2017"],
+    "outFile": "./build/index.js",
+    "strict": true,
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules"]
+  },
+  "files": [
+    "./src/match_handler.ts",
+    "./src/index.ts"
+  ]
+}
