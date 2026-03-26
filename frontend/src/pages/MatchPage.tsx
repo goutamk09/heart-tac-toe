@@ -51,15 +51,15 @@ interface MatchPageProps {
   onLeave: () => void;
 }
 
-type PlayerRow = {
-  userId: string;
-  username: string;
-  symbol: "X" | "O";
-  wins: number;
-  losses: number;
-  draws: number;
-  score: number;
-};
+// type PlayerRow = {
+//   userId: string;
+//   username: string;
+//   symbol: "X" | "O";
+//   wins: number;
+//   losses: number;
+//   draws: number;
+//   score: number;
+// };
 
 const EMPTY_SNAPSHOT: MatchSnapshot = {
   board: ["", "", "", "", "", "", "", "", ""],
@@ -137,7 +137,6 @@ export default function MatchPage({
     currentTurn,
     status,
     winner,
-    winnerUsername,
     players,
     gameDurationSec,
     turnTimeRemainingSec,

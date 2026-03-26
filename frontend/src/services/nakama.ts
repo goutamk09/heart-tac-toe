@@ -1,6 +1,6 @@
 import { Client, type Session, type Socket, type Match } from "@heroiclabs/nakama-js";
 
-let displayName: string | null = null;
+// let displayName: string | null = null;
 
 export interface PlayerInfo {
   userId: string;
@@ -35,7 +35,11 @@ export interface AvailableMatch {
   label?: string;
 }
 
-const client = new Client("defaultkey", "127.0.0.1", "7350", false);
+const host = import.meta.env.VITE_NAKAMA_HOST || "127.0.0.1";
+const port = import.meta.env.VITE_NAKAMA_PORT || "7350";
+const useSSL = import.meta.env.VITE_NAKAMA_SSL === "true";
+
+const client = new Client("defaultkey", host, port, useSSL);
 
 let session: Session | null = null;
 let socket: Socket | null = null;
@@ -102,7 +106,7 @@ export async function loginGuest(username: string) {
     throw new Error("Username is required");
   }
 
-  displayName = trimmedUsername;
+  // displayName = trimmedUsername;
 
   const storageKey = "heart_tac_toe_device_id";
 
