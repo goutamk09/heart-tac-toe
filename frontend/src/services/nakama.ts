@@ -73,7 +73,7 @@ async function ensureSocketConnected() {
   }
 
   if (!socket) {
-    socket = client.createSocket();
+    socket = client.createSocket(useSSL, true);
     attachSocketListeners();
   }
 
@@ -131,7 +131,7 @@ export async function loginGuest(username: string) {
     display_name: trimmedUsername,
   });
 
-  socket = client.createSocket();
+  socket = client.createSocket(useSSL, true);
   attachSocketListeners();
   await socket.connect(session, true);
 
