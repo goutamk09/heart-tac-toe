@@ -283,7 +283,10 @@ export default function MatchPage({
           maxWidth: "1280px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "420px minmax(0, 1fr)",
+          gridTemplateColumns:
+            window.innerWidth <= 768
+              ? "1fr"
+              : "420px minmax(0, 1fr)",
           gap: "22px",
           alignItems: "start",
           position: "relative",
@@ -601,7 +604,7 @@ export default function MatchPage({
             <div
               style={{
                 width: "100%",
-                maxWidth: "760px",
+                maxWidth: window.innerWidth <= 768 ? "320px" : "760px",
                 margin: "0 auto",
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
@@ -623,7 +626,10 @@ export default function MatchPage({
                     borderRadius: "24px",
                     border: `2px solid ${theme.border}`,
                     background: theme.whiteCard,
-                    fontSize: "clamp(42px, 6vw, 78px)",
+                    fontSize:
+                      window.innerWidth <= 768
+                        ? "32px"
+                        : "clamp(42px, 6vw, 78px)",
                     fontWeight: 900,
                     color: cell === "X" ? "#ff4d88" : "#111827",
                     cursor: !canPlay || cell !== "" ? "not-allowed" : "pointer",

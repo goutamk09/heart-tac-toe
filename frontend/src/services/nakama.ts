@@ -35,9 +35,11 @@ export interface AvailableMatch {
   label?: string;
 }
 
-const host = import.meta.env.VITE_NAKAMA_HOST || "127.0.0.1";
-const port = import.meta.env.VITE_NAKAMA_PORT || "7350";
-const useSSL = import.meta.env.VITE_NAKAMA_SSL === "true";
+const host = import.meta.env.VITE_NAKAMA_HOST || window.location.hostname;
+const port = import.meta.env.VITE_NAKAMA_PORT || "443";
+const useSSL = import.meta.env.VITE_NAKAMA_SSL
+  ? import.meta.env.VITE_NAKAMA_SSL === "true"
+  : window.location.protocol === "https:";
 
 const client = new Client("defaultkey", host, port, useSSL);
 
@@ -101,6 +103,9 @@ export function clearLastMatchSnapshot() {
 }
 
 export async function loginGuest(username: string) {
+  clearLastMatchSnapshot();
+  currentMatchId = null;
+  
   const trimmedUsername = username.trim();
   if (!trimmedUsername) {
     throw new Error("Username is required");

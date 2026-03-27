@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import LobbyPage from "./pages/LobbyPage";
 import MatchPage from "./pages/MatchPage";
@@ -7,6 +7,12 @@ export default function App() {
   const [username, setUsername] = useState("");
   const [matchId, setMatchId] = useState<string | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setUsername("");
+    setIsLoggedIn(false);
+    setMatchId(null);
+  }, []);
 
   const handleLogin = (name: string) => {
     setUsername(name);
